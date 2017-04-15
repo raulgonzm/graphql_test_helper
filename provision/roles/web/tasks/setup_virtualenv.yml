@@ -1,0 +1,17 @@
+---
+
+- name: Install virtualenv
+  pip: name=virtualenv
+  tags: packages
+
+# Upgrade virtualenv
+- pip:
+    name: virtualenv
+    extra_args: --upgrade
+
+- name: Create the virtualenv
+  command: . /usr/local/bin/virtualenvwrapper.sh && mkvirtualenv -a {{ project_path }} -p {{ python_bin_path }}/{{ virtualenv_python_version }} {{ virtualenv_name }}
+           creates={{ virtualenv_path }}/bin/activate executable=/bin/bash
+
+- name: Install packages required by the Django app inside virtualenv
+  pip: virtualenv={{ virtualenv_path }} requirements={{ requirements_file }}

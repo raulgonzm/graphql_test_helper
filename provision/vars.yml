@@ -1,0 +1,14 @@
+project_name: graphql_testing
+application_name: graphql_testing
+virtualenv_name: graphql_testing
+
+developer_ip: 192.168.1.51
+
+# Application settings.
+root_path: "/vagrant"
+virtualenv_root_path: "{{ root_path }}/.virtualenvs"
+virtualenv_path: "{{ virtualenv_root_path }}/{{ virtualenv_name }}"
+project_path: "{{ root_path }}/{{ project_name }}"
+application_log_dir: "{{ virtualenv_path }}/logs"
+application_log_file: "{{ application_log_dir }}/gunicorn_supervisor.log"
+requirements_file: "{{ root_path }}/requirements/devel.txt"

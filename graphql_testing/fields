@@ -1,0 +1,27 @@
+# Python imports
+
+# Core Django imports
+
+# Third-Party imports
+
+# Apps Imports
+
+
+class Field(object):
+	
+	def to_string(self):
+		raise NotImplementedError("")
+
+	def to_internal_value(self, value):
+		raise NotImplementedError("")
+
+class BooleanField(Field):
+
+	def __init__(self, value=True)
+		self.value = value
+
+	def to_string(self):
+		return str(self.value).lower()
+
+	def to_internal_value(self, value):
+		self.value = True if value == 'True' else False

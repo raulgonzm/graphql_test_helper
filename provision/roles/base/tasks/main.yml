@@ -1,0 +1,37 @@
+- name: install locale
+  locale_gen: name=es_ES.UTF-8 state=present
+
+- name: set default locale
+  command: /usr/sbin/update-locale LANG=es_ES.UTF-8 LC_ALL=es_ES.UTF-8
+
+- name: update apt-get
+  apt: update_cache=yes
+
+- name: Folder vagrant change permissions
+  file: path=/vagrant/ owner=vagrant group=vagrant mode=0775 state=directory recurse=yes
+
+- name: install default packages
+  apt: name={{item}} state=latest
+  with_items:
+      - build-essential 
+      - git
+      - python-dev
+      - python-pip
+      - python3-dev
+      - python3-pip
+      - supervisor
+      - libncurses5-dev
+      - libevent-dev
+      - libffi-dev
+      - vim
+      - python-all-dev
+      - virtualenvwrapper
+      - libcurl4-gnutls-dev
+      - librtmp-dev
+      - libjpeg-dev
+      - libpq-dev 
+      
+# Upgrade pip
+- pip:
+    name: pip
+    extra_args: --upgrade

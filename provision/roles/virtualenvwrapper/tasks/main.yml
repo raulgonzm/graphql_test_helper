@@ -1,0 +1,23 @@
+---
+# tasks file for virtualenvwrapper
+- name: install virtualenvwrapper
+  pip: >
+    name=virtualenvwrapper
+    version={{ virtualenvwrapper_version }}
+    state=present
+  tags:
+    - virtualenvwrapper
+    - virtualenvwrapper_installation
+
+- name: add WORKON_HOME to bashrc
+  lineinfile: dest=/home/vagrant/.bashrc line="export WORKON_HOME={{ virtualenv_root_path }}"
+
+- name: add PROJECT_HOME to bashrc
+  lineinfile: dest=/home/vagrant/.bashrc line="export PROJECT_HOME={{ project_path }}"
+
+- name: source virtualenvwrapper script
+  lineinfile: dest=/home/vagrant/.bashrc line="source /usr/local/bin/virtualenvwrapper.sh"
+
+- name: source bashrc
+  command: source /home/vagrant/.bashrc  executable=/bin/bash
+

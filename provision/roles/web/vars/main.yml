@@ -1,0 +1,4 @@
+---
+
+#virutalenv settings
+python_bin_path: "/usr/bin"

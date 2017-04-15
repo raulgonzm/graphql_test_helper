@@ -1,0 +1,4 @@
+---
+
+- include: setup_virtualenv.yml
+  tags: virtualenv
