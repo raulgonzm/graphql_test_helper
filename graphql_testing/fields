@@ -13,7 +13,7 @@ class Field(object):
 		self.value = self.to_internal_value(value)
 	
 	def to_string(self):
-		raise NotImplementedError("")
+		return self.value
 
 	def to_internal_value(self, value):
 		raise NotImplementedError("")
@@ -30,8 +30,11 @@ class BooleanField(Field):
 
 class StringField(Field):
 
-	def to_string(self):
-		return self.value
+	def to_internal_value(self, value):
+		self.value = str(value)
+
+
+class IntegerField(Field):
 
 	def to_internal_value(self, value):
 		self.value = str(value)
