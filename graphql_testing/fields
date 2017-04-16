@@ -8,6 +8,9 @@
 
 
 class Field(object):
+
+	def __init__(self, value=True)
+		self.value = self.to_internal_value(value)
 	
 	def to_string(self):
 		raise NotImplementedError("")
@@ -15,13 +18,20 @@ class Field(object):
 	def to_internal_value(self, value):
 		raise NotImplementedError("")
 
-class BooleanField(Field):
 
-	def __init__(self, value=True)
-		self.value = value
+class BooleanField(Field):
 
 	def to_string(self):
 		return str(self.value).lower()
 
 	def to_internal_value(self, value):
 		self.value = True if value == 'True' else False
+
+
+class StringField(Field):
+
+	def to_string(self):
+		return self.value
+
+	def to_internal_value(self, value):
+		self.value = str(value)
