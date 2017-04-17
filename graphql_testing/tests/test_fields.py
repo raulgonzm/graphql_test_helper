@@ -57,3 +57,12 @@ class GraphQLAPIHelperFieldsTestCase(TestCase):
     	new_field.to_internal_value(value='miMercadona')
     	self.assertEqual(new_field.value, 'miMercadona')
 
+    def test_integer_field_to_string(self):
+    	new_field = IntegerField(value=1)
+    	self.assertEqual(new_field.to_string(), "1")
+
+    def test_integer_field_to_internal_value(self):
+    	new_field = IntegerField(value=1)
+    	new_field.to_internal_value(value=1)
+    	self.assertEqual(new_field.to_string(), "1")
+
