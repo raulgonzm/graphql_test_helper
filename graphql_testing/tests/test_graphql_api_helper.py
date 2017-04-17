@@ -1,11 +1,17 @@
 # Python imports
 from unittest import TestCase
+import os
+import sys
+import inspect
 # Core Django imports
 
 # Third-Party imports
 
 # Apps Imports
-from mimercadona_api.core.graphql.test import GraphQLAPIHelper
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0,parentdir)
+from test import GraphQLAPIHelper
 
 
 class GraphQLAPIHelperTestCase(TestCase):

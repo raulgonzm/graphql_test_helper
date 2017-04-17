@@ -9,8 +9,8 @@
 
 class Field(object):
 
-	def __init__(self, value)
-		self.value = self.to_internal_value(value)
+	def __init__(self, value):
+		self.to_internal_value(value)
 	
 	def to_string(self):
 		return self.value
@@ -27,8 +27,10 @@ class BooleanField(Field):
 	def to_internal_value(self, value):
 		if isinstance(value, str):
 			self.value = True if value == 'True' else False
-		else:
+		elif isinstance(value, bool):
 			self.value = value
+		else:
+			self.value = False
 
 
 class StringField(Field):
