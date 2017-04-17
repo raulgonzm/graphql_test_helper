@@ -3,6 +3,7 @@ from unittest import TestCase
 import os
 import sys
 import inspect
+import uuid
 # Core Django imports
 
 # Third-Party imports
@@ -65,4 +66,13 @@ class GraphQLAPIHelperFieldsTestCase(TestCase):
     	new_field = IntegerField(value=1)
     	new_field.to_internal_value(value=1)
     	self.assertEqual(new_field.to_string(), "1")
+
+    def test_uuid_field_to_string(self):
+    	new_field = UUIDField(value=uuid.uuid4())
+    	self.assertIsInstance(new_field.to_string(), str)
+
+    def test_uuid_field_to_internal_value(self):
+    	new_field = UUIDField(value=uuid.uuid4())
+    	new_field.to_internal_value(value=uuid.uuid4())
+    	self.assertIsInstance(new_field.to_string(), str)
 
