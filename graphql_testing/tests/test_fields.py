@@ -47,3 +47,13 @@ class GraphQLAPIHelperFieldsTestCase(TestCase):
     	self.assertEqual(new_field.to_string(), "true")
     	new_field = BooleanField(value=False)
     	self.assertEqual(new_field.to_string(), "false")
+
+    def test_string_field_to_string(self):
+    	new_field = StringField(value='miMercadona')
+    	self.assertEqual(new_field.to_string(), 'miMercadona')
+
+    def test_string_field_to_internal_value(self):
+    	new_field = StringField(value='miMercadona')
+    	new_field.to_internal_value(value='miMercadona')
+    	self.assertEqual(new_field.value, 'miMercadona')
+
