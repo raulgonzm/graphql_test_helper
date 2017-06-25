@@ -20,6 +20,9 @@ class GraphQLAPIHelper(object):
     def _build_node_fields_list(self):
         return ', '.join(map(str, self.fields))
 
+    def _build_node_filter_list(self):
+        return str({filter_key: filter.value for k, v in d.items()})
+
     def _build_graphql_query(self):
         if self.filters:
             return self._build_graphql_query_with_lookups()
